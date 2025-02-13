@@ -33,9 +33,38 @@ public class Main {
       // ACCESS a value with the double index operator
       // array[row][col]
       System.out.println("You earned " + minefield[2][0] + " points");
-      System.out.println("You earned " + minefield[1][1] + " points, yay!");
+      System.out.println("You earned " + minefield[1][1] + " points");
       // Can also store value in a new variable
       int worstSpot = minefield[0][1];
+
+      // NESTED Loops are necessary to traverse 2D arrays
+      // ENHANCED FOR-EACH LOOP to "visit" all items in order
+      // OUTER loop iterates through each row
+      // IMPORTANT: Data type of a ROW is a 1D Array
+      for (String[] row : seatingChart) {
+         // INNER loop iterates through column values
+         // "for every string item in the row array"
+         for (String col : row) {
+            System.out.print(col + " ");
+         }
+         System.out.println(); // line break between rows
+      }
+
+      // Cannot use for-each if you want to MODIFY VALUES
+      // or iterate in a different order 
+      // STANDARD ("indexed") FOR LOOP 
+      // array.length represents NUMBER OF ROWS in the 2D array
+      for (int row=0; row < minefield.length; row++) {
+         // array[0].length represents NUMBER OF COLUMNS in a row
+         for (int col=0; col < minefield[0].length; col++) {
+            // if spot is a "bomb" (negative num), replace it
+            if (minefield[row][col] < 0) {
+               minefield[row][col] = minefield[row][col] * -1;
+            }
+            System.out.print("[" + minefield[row][col] + "]");
+         }
+         System.out.println();
+      }
 
 
 
